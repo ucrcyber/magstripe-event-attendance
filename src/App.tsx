@@ -9,7 +9,7 @@ function App() {
   return (
     <>
       <input onKeyDown={(e) => {
-        if(e.code === 'Enter'){
+        if(e.code.includes('Enter')){
           setPayload((e.target as HTMLInputElement).value);
           (e.target as HTMLInputElement).value = '';
         }
