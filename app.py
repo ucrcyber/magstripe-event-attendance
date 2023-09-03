@@ -35,9 +35,10 @@ def home():
 @app.route('/api/checkin', methods=['POST'])
 def checkin():
     data = request.get_json()
-    if 'name' in data and 'id' in data:
+    if 'name' in data and 'id' in data and 'raw_card_data' in data:
         _name = data['name']
         _id = str(data['id']).strip()
+        _raw_card_data = data['raw_card_data']
 
         if not is_valid_id(_id):
             return jsonify({'error': 'Invalid ID format'}), 400
@@ -49,6 +50,7 @@ def checkin():
             post_data = {
                 'name': _name,
                 'id': _id,
+                'raw_card_data': _raw_card_data,
                 'timestamp': int(time.time())
             }
             collection.insert_one(post_data)
