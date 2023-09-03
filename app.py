@@ -30,7 +30,7 @@ def is_valid_name(name):
 
 @app.route('/')
 def home():
-    return render_template('dist/index.html')
+    return render_template('index.html')
 
 @app.route('/api/checkin', methods=['POST'])
 def checkin():
