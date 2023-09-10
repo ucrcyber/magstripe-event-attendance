@@ -51,6 +51,11 @@ function App() {
                     autoHideDuration: 5000,
                   });
                 }
+              }).catch(() => {
+                enqueueSnackbar('failed to connect to server', {
+                  variant: 'error',
+                  autoHideDuration: 5000,
+                })
               })
             }else{
               enqueueSnackbar('Unable to scan', {
