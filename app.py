@@ -45,15 +45,22 @@ def checkin():
         if not is_valid_name(_name):
             return jsonify({'error': 'Invalid name format'}), 400
 
-        existing_record = collection.find_one({'id': _id})
-        if not existing_record:
-            post_data = {
-                'name': _name,
-                'id': _id,
-                'raw_card_data': _raw_card_data,
-                'timestamp': int(time.time())
-            }
-            collection.insert_one(post_data)
+        # existing_record = collection.find_one({'id': _id})
+        # if not existing_record:
+        #     post_data = {
+        #         'name': _name,
+        #         'id': _id,
+        #         'raw_card_data': _raw_card_data,
+        #         'timestamp': int(time.time())
+        #     }
+        #     collection.insert_one(post_data)
+        post_data = {
+            'name': _name,
+            'id': _id,
+            'raw_card_data': _raw_card_data,
+            'timestamp': int(time.time())
+        }
+        collection.insert_one(post_data)
 
         return jsonify({'message': 'Success'})
     else:
